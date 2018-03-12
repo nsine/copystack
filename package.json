@@ -62,6 +62,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^16.2.0",
+    "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
