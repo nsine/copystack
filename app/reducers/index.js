@@ -1,6 +1,19 @@
-import { combineReducers } from 'redux';
-import example from './example';
+import * as ActionTypes from '../constants';
 
-export default combineReducers({
-  example,
-});
+const initialState = {
+  snippets: [],
+};
+
+const actionsMap = {
+  [ActionTypes.ADD_SNIPPET](state, action) {
+    return {
+      snippets: [...state.snippets, action.snippet],
+    };
+  },
+};
+
+export default function snippetReducer(state = initialState, action) {
+  const reduceFn = actionsMap[action.type];
+  if (!reduceFn) return state;
+  return reduceFn(state, action);
+}

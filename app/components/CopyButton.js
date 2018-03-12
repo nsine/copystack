@@ -5,13 +5,17 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 export default class CopyButton extends Component {
   static propTypes = {
     text: PropTypes.string,
+    onCopy: PropTypes.func.isRequired,
   };
 
   render() {
-    const { text } = this.props;
+    const { text, onCopy } = this.props;
 
     return (
-      <CopyToClipboard text={text}>
+      <CopyToClipboard
+        text={text}
+        onCopy={onCopy}
+      >
         <button>Copy</button>
       </CopyToClipboard>
     );

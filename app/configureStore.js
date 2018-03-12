@@ -4,7 +4,7 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import rootReducer from './reducers';
 import storage from './utils/storage';
 
-export default function configureStore(initialState = {}) {
+export default function configureStore(initialState) {
   const middlewares = [
     thunk,
   ];

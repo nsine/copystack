@@ -1,1 +1,1 @@
-export const TODO_SMTH = 'TODO_SMTH';
+export const ADD_SNIPPET = 'ADD_SNIPPET';
