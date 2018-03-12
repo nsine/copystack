@@ -1,10 +1,9 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 
 window.addEventListener('load', () => {
-  // Insert inject code here
-
-  // const injectedNode = document.createElement('div');
-  // document.body.appendChild(injectedNode);
-  // render(<ReactComponent />, injectedNode);
+  const codeDiv = document.querySelectorAll('.prettyprint.prettyprinted');
+  codeDiv.forEach(node => {
+    node.style.display = 'none';
+  });
 });

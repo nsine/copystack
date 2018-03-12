@@ -24,6 +24,7 @@
   ],
   "author": "Vlad Klimenkov <vlad.klimenkovv@gmail.com>",
   "devDependencies": {
+    "@types/chrome": "0.0.60",
     "autoprefixer": "^8.1.0",
     "babel-core": "^6.3.15",
     "babel-eslint": "^7.1.0",
