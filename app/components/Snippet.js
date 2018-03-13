@@ -1,5 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  position: relative;
+
+  margin: 10px;
+  padding: 10px;
+  border: solid 1px black;
+  border-radius: 5px;
+`;
+
+const PageName = styled.a`
+  font-weight: bold;
+  font-size: 1.2em;
+`;
+
+const RemoveButton = styled.a`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
 
 class Snippet extends Component {
   static propTypes = {
@@ -13,14 +34,15 @@ class Snippet extends Component {
   render() {
     const { pageName, url, text, onRemove } = this.props;
     return (
-      <div>
-        <div>{pageName}</div>
-        <div>{url}</div>
-        <div>{text}</div>
-        <div>
+      <Wrapper>
+        <PageName href={url} target='_blank'>
+          {pageName}
+        </PageName>
+        <pre className='prettyprint'>{text}</pre>
+        <RemoveButton>
           <button onClick={onRemove}>Remove</button>
-        </div>
-      </div>
+        </RemoveButton>
+      </Wrapper>
     );
   }
 }
