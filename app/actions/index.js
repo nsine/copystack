@@ -4,3 +4,8 @@ export const addSnippet = (snippet) => ({
   type: ActionTypes.ADD_SNIPPET,
   snippet,
 });
+
+export const removeSnippet = (snippetId) => ({
+  type: ActionTypes.REMOVE_SNIPPET,
+  snippetId,
+});

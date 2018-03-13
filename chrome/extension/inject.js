@@ -47,7 +47,7 @@ getStore()
 
     window.addEventListener('load', () => {
       const codeElements = document.querySelectorAll(CODE_SELECTOR);
-
+      console.log('codeElements');
       codeElements.forEach(node => {
         patchCodeElementStyles(node);
         const buttonDiv = createButtonDiv();
