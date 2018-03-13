@@ -22,8 +22,8 @@ function createButtonDiv() {
 
 const makeHandleCopy = (store) => (text) => {
   store.dispatch(actions.addSnippet({
-    pageName: 'page name',
-    url: 'url',
+    pageName: document.title,
+    url: document.URL,
     text: text,
   }));
 };
@@ -42,12 +42,10 @@ const getStore = () => new Promise((resolve) => {
 
 getStore()
   .then(store => {
-    console.log(store.getState());
     const handleCopy = makeHandleCopy(store);
 
     window.addEventListener('load', () => {
       const codeElements = document.querySelectorAll(CODE_SELECTOR);
-      console.log('codeElements');
       codeElements.forEach(node => {
         patchCodeElementStyles(node);
         const buttonDiv = createButtonDiv();
