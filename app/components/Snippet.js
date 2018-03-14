@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import CopyButton from './CopyButton';
+
 const Wrapper = styled.div`
   position: relative;
 
@@ -16,10 +18,17 @@ const PageName = styled.a`
   font-size: 1.2em;
 `;
 
-const RemoveButton = styled.a`
+const TopRightPositioned = styled.a`
   position: absolute;
   top: 0;
   right: 0;
+`;
+
+const CodeWrapper = styled.div`
+  position: relative;
+
+  background-color: #eff0f1;
+  border: none;
 `;
 
 class Snippet extends Component {
@@ -38,10 +47,15 @@ class Snippet extends Component {
         <PageName href={url} target='_blank'>
           {pageName}
         </PageName>
-        <pre className='prettyprint'>{text}</pre>
-        <RemoveButton>
+        <CodeWrapper>
+          <pre className='prettyprint' style={{border: 'none', overflow: 'auto'}}>{text}</pre>
+          <TopRightPositioned>
+            <CopyButton text={text} />
+          </TopRightPositioned>
+        </CodeWrapper>
+        <TopRightPositioned>
           <button onClick={onRemove}>Remove</button>
-        </RemoveButton>
+        </TopRightPositioned>
       </Wrapper>
     );
   }

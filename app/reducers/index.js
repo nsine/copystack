@@ -41,7 +41,13 @@ const actionsMap = {
         ...state.snippets.slice(index + 1),
       ],
     };
-  }
+  },
+
+  [ActionTypes.CLEAR_SNIPPETS]() {
+    return {
+      snippets: [],
+    };
+  },
 };
 
 export default function snippetReducer(state = initialState, action) {

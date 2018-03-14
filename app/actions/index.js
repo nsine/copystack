@@ -9,3 +9,7 @@ export const removeSnippet = (snippetId) => ({
   type: ActionTypes.REMOVE_SNIPPET,
   snippetId,
 });
+
+export const clearSnippets = () => ({
+  type: ActionTypes.CLEAR_SNIPPETS,
+});
