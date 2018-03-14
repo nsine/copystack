@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "md5": "^2.2.1",
     "react": "^16.2.0",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.2.0",

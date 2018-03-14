@@ -1,4 +1,7 @@
+import * as md5 from 'md5';
+
 import * as ActionTypes from '../constants';
+
 
 const initialState = {
   snippets: [],
@@ -6,13 +9,23 @@ const initialState = {
 
 const actionsMap = {
   [ActionTypes.ADD_SNIPPET](state, action) {
-    const nextId = state.snippets.length + 1;
+    const hash = md5.default(JSON.stringify(action.snippet));
+
+    const snippetsWithoutSame = state.snippets.filter(s => s.hash !== hash);
+
+    const nextId = snippetsWithoutSame.length ? snippetsWithoutSame[0].id + 1 : 1;
+    const time = new Date();
 
     return {
-      snippets: [...state.snippets, {
-        id: nextId,
-        ...action.snippet,
-      }],
+      snippets: [
+        {
+          id: nextId,
+          time,
+          hash,
+          ...action.snippet,
+        },
+        ...snippetsWithoutSame,
+      ],
     };
   },
 
