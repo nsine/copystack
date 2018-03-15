@@ -28,8 +28,10 @@ function createButtonDiv() {
 }
 
 const makeHandleCopy = (store) => (text) => {
+  const pageName = document.title.replace('- Stack Overflow', '').trim();
+
   store.dispatch(actions.addSnippet({
-    pageName: document.title,
+    pageName,
     url: document.URL,
     text: text,
   }));
