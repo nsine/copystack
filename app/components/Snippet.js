@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FaClose } from 'react-icons/lib/fa';
 
+import Button from './Button';
 import CopyButton from './CopyButton';
 
 const Wrapper = styled.div`
@@ -9,13 +11,19 @@ const Wrapper = styled.div`
 
   margin: 10px;
   padding: 10px;
-  border: solid 1px black;
   border-radius: 5px;
+  background-color: #ECEFF1;
 `;
 
 const PageName = styled.a`
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: black;
+
+  &:visited {
+    text-decoration: none;
+  }
 `;
 
 const TopRightPositioned = styled.a`
@@ -27,8 +35,24 @@ const TopRightPositioned = styled.a`
 const CodeWrapper = styled.div`
   position: relative;
 
-  background-color: #eff0f1;
+  background-color: #fff;
   border: none;
+`;
+
+const CloseButton = styled(Button).attrs({
+  color: '#EF5350',
+})`
+  margin-right: -10px;
+  margin-top: -10px;
+`;
+
+const PrettyCode = styled.pre`
+  overflow: auto;
+  font-size: 12px;
+
+  && {
+    border: none;
+  }
 `;
 
 class Snippet extends Component {
@@ -48,13 +72,13 @@ class Snippet extends Component {
           {pageName}
         </PageName>
         <CodeWrapper>
-          <pre className='prettyprint' style={{border: 'none', overflow: 'auto'}}>{text}</pre>
+          <PrettyCode className='prettyprint'>{text}</PrettyCode>
           <TopRightPositioned>
             <CopyButton text={text} />
           </TopRightPositioned>
         </CodeWrapper>
         <TopRightPositioned>
-          <button onClick={onRemove}>Remove</button>
+          <CloseButton onClick={onRemove}><FaClose style={{paddingBottom: '2px'}} /></CloseButton>
         </TopRightPositioned>
       </Wrapper>
     );

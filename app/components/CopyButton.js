@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FaCopy } from 'react-icons/lib/fa';
+import styled from 'styled-components';
+
+import Button from './Button';
+
+const CopyButtonInner = styled(Button).attrs({
+  color: '#64B5F6',
+})`
+  min-height: unset;
+  padding: 5px 7px;
+  border-radius: 0;
+`;
 
 export default class CopyButton extends Component {
   static propTypes = {
@@ -16,7 +28,7 @@ export default class CopyButton extends Component {
         text={text}
         onCopy={onCopy}
       >
-        <button>Copy</button>
+        <CopyButtonInner><FaCopy /></CopyButtonInner>
       </CopyToClipboard>
     );
   }

@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 
 import CopyButton from '../../app/components/CopyButton';
 import createStore from '../../app/configureStore';
 import * as actions from '../../app/actions';
 
 const CODE_SELECTOR = '.prettyprint.prettyprinted';
+
+const CopyButtonInjected = styled(CopyButton)`
+  min-height: unset;
+  padding: 5px 7px;
+  border-radius: 0;
+`;
 
 function patchCodeElementStyles(node) {
   node.style.position = 'relative';
@@ -54,7 +61,7 @@ getStore()
         const textToCopy = node.innerText;
 
         const button = (
-          <CopyButton text={textToCopy} onCopy={() => handleCopy(textToCopy)}/>
+          <CopyButtonInjected text={textToCopy} onCopy={() => handleCopy(textToCopy)}/>
         );
 
         ReactDOM.render(button, buttonDiv);
