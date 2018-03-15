@@ -15,7 +15,24 @@ const Wrapper = styled.div`
   background-color: #ECEFF1;
 `;
 
+const HeadSection = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+`;
+
+const ButtonsSection = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 65px;
+`;
+
 const PageName = styled.a`
+  flex: 1 0;
+
   font-weight: bold;
   font-size: 1.5em;
   text-decoration: none;
@@ -41,10 +58,7 @@ const CodeWrapper = styled.div`
 
 const CloseButton = styled(Button).attrs({
   color: '#EF5350',
-})`
-  margin-right: -10px;
-  margin-top: -10px;
-`;
+})``;
 
 const PrettyCode = styled.pre`
   overflow: auto;
@@ -54,6 +68,14 @@ const PrettyCode = styled.pre`
     border: none;
   }
 `;
+
+const makeLargerButton = (component) =>
+  styled(component)`
+    font-size: 20px;
+  `;
+
+const LargeCopyButton = makeLargerButton(CopyButton);
+const LargeCloseButton = makeLargerButton(CloseButton);
 
 class Snippet extends Component {
   static propTypes = {
@@ -68,17 +90,19 @@ class Snippet extends Component {
     const { pageName, url, text, onRemove } = this.props;
     return (
       <Wrapper>
-        <PageName href={url} target='_blank'>
-          {pageName}
-        </PageName>
+        <HeadSection>
+          <PageName href={url} target='_blank'>
+            {pageName}
+          </PageName>
+          <ButtonsSection>
+            <LargeCopyButton text={text} />
+            <LargeCloseButton onClick={onRemove}><FaClose style={{paddingBottom: '2px'}} /></LargeCloseButton>
+          </ButtonsSection>
+        </HeadSection>
         <CodeWrapper>
           <PrettyCode className='prettyprint'>{text}</PrettyCode>
-          <TopRightPositioned>
-            <CopyButton text={text} />
-          </TopRightPositioned>
         </CodeWrapper>
         <TopRightPositioned>
-          <CloseButton onClick={onRemove}><FaClose style={{paddingBottom: '2px'}} /></CloseButton>
         </TopRightPositioned>
       </Wrapper>
     );
