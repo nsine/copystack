@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Snippet from '../components/Snippet';
+import SnippetList from '../components/SnippetList';
 import { removeSnippet } from '../actions';
 
 @connect((state) => ({
@@ -10,35 +10,26 @@ import { removeSnippet } from '../actions';
 }), {
   removeSnippet,
 })
-export default class SnippetList extends Component {
+export default class SnippetsContainer extends Component {
   static propTypes = {
     snippets: PropTypes.array,
 
     removeSnippet: PropTypes.func.isRequired,
   };
 
-  makeHandleRemove = (id) => () => {
+  handleRemoveSnippet = (id) => {
     this.props.removeSnippet(id);
   }
 
   render() {
     const { snippets } = this.props;
-
+    console.log(snippets);
     return (
       <div>
-        {
-          snippets && snippets.length ? snippets.map(snippet => (
-            <Snippet
-              key={snippet.id}
-              {...snippet}
-              onRemove={this.makeHandleRemove(snippet.id)}
-            />
-          )) : (
-            <div>
-              No saved snippets
-            </div>
-          )
-        }
+        <SnippetList
+          snippets={snippets}
+          onRemove={this.handleRemoveSnippet}
+        />
       </div>
     );
   }

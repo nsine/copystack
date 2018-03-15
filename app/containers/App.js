@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import SnippetList from './SnippetList';
+import SnippetsContainer from './SnippetsContainer';
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <SnippetList />
+        <SnippetsContainer />
       </div>
     );
   }
