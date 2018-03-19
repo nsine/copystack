@@ -9,7 +9,7 @@ import CopyButton from './CopyButton';
 const Wrapper = styled.div`
   position: relative;
 
-  margin: 10px;
+  margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
   background-color: #ECEFF1;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Snippet from '../components/Snippet';
+import NoSnippetsDiv from '../components/NoSnippetsDiv';
 
 export default class SnippetList extends Component {
   static propTypes = {
@@ -23,9 +24,9 @@ export default class SnippetList extends Component {
               onRemove={() => onRemove(snippet.id)}
             />
           )) : (
-            <div>
+            <NoSnippetsDiv>
               No saved snippets
-            </div>
+            </NoSnippetsDiv>
           )
         }
       </div>
