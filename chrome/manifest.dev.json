@@ -1,10 +1,10 @@
 {
-  "version": "0.0.0",
-  "name": "hello-world-extension",
+  "version": "0.0.1",
+  "name": "copystack",
   "manifest_version": 2,
-  "description": "Boilerplate for Chrome-React extension",
+  "description": "Save StackOverflow snippets",
   "browser_action": {
-    "default_title": "Hello world extension",
+    "default_title": "Copystack",
     "default_popup": "popup.html"
   },
   "icons": {
